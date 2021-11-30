@@ -102,7 +102,7 @@ refactor(runtime): drop support for Node 6
 Upon save a commit will be created with the body and footer typed. 
 
 ::: tip
-There are to kind of footer separators in conventional commits : `token: message` and `token #message`.
+There are two kinds of footer separators in conventional commits : `token: message` and `token #message`.
 
 GitHub automatically link issues prefixed with a hash. 
 
@@ -119,7 +119,7 @@ GitHub automatically link issues prefixed with a hash.
 
 By default `coco` supports standard conventional commits type `feat`, `fix` plus the angular commit types: `build`, `ci`, 
 `revert`, `docs`, `test`, `style`, `chore`, `perf`. If you want to use more types you can add them to a file named 
-`cog.toml` in your repository root directory : 
+`cog‧toml` in your repository root directory : 
 
 ```toml
 [commit_types]
