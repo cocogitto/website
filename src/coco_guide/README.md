@@ -119,7 +119,7 @@ GitHub automatically link issues prefixed with a hash.
 
 By default `coco` supports standard conventional commits type `feat`, `fix` plus the angular commit types: `build`, `ci`, 
 `revert`, `docs`, `test`, `style`, `chore`, `perf`. If you want to use more types you can add them to a file named 
-`cog‧toml` in your repository root directory : 
+`cog.toml` in your repository root directory : 
 
 ```toml
 [commit_types]
