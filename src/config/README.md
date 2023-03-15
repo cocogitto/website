@@ -169,7 +169,7 @@ The config reference list all value that can be set in the `cog.toml` file at th
 - Also see:
 
     * [User guide -> Changelog](../guide/#changelogs)
-    * [User guide -> Built-in templates](../guide/#buiLt-in-templates)
+    * [User guide -> Built-in templates](../guide/#built-in-templates)
     * [User guide -> Custom templates](../guide/#custom-templates)
 
 ### `remote`
