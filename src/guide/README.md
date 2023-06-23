@@ -223,42 +223,44 @@ This is useful when your git repo started to use conventional commits from a cer
 don't care about editing old commits.
 :::
 
-## Built-in git hooks
+## Managing git-hooks
 
-To protect your commit history, and your git remote, `cog` have builtins
-[git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
+Cocogitto provide a way to share [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). 
 
-You can install them all by running :
+First you need to set up some hooks in `cog.toml`:
 
-```bash
-cog install-hook all
-```
+```toml
+# Embedded git-hoooks script
+[git_hooks.commit-msg]
+script = """#!/bin/sh
+set -e
+cog verify --file $1
+cog check
+cargo fmt -v --all --check
+cargo clippy
+"""
 
-Or one by one, specifying the hook name :
-
-**Pre-push hook:**
-
-Enabling this hook will run `cog check` before pushing to remote.
-```bash
-cog install-hooks pre-push
-```
-
-**Pre-commit hook:**
-
-Enabling this hook will run `cog verify` before creating a new commit.
-
- ```bash
- cog install-hook commit-msg
+# Or file path
+[git_hooks.pre-push]
+path = "hooks/pre-push.sh"
 ```
 
 ::: warning
-This hooks will apply on standard git commit as well.
-If you need to bypass them use the `--no-verify` flag.
-
-```bash
-git commit -m "WIP" --no-verify
-```
+Not that unlike `git commit`, `cog commit` will not pick a default shell when running hooks. Make sure to provide
+a shebang in your hook definition.
 :::
+
+Now that our hook are defined in cocogitto's config they can be installed with `cog install-hook`. 
+
+**Install all git-hooks:**
+```bash
+❯ cog install-hook --all
+```
+
+**Install a single hook:**
+```bash
+❯ cog install-hook commit-msg
+```
 
 ## Sandbox
 
