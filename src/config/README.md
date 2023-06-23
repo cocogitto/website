@@ -45,22 +45,44 @@ The config reference list all value that can be set in the `cog.toml` file at th
 
   [User guide -> Deal with merge commit](../guide/#deal-with-merge-commit)
 
-### `commit_types`
+## Commit Types
 
-- Type: `Hashmap<String, ChangelogTitle>`
+- Type: `Hashmap<String, CommitType>`
 - Optional: `true`
 - Description: extend the allowed commit types, creating a new `cog commit` command and allowing to generate changelog entries for the
-    given type. 
+    given type. Can also be used to override the default commit types. 
 - Example: 
     ```toml
     [commit_types]
     hotfix = { changelog_title = "Hotfixes" }
+    chore = { changelog_title = "Hotfixes", omit_from_changelog = true }
     release = { changelog_title = "Releases" }
     ```
 - Also see: 
     
     [User guide -> Custom commit types](../guide/#custom-commit-types)
 
+### `changelog_title`
+- Type: `String`
+- Optional: `false`
+- Description: change the changelog title for the given commit type.
+- Example:
+    ```toml
+    [commit_types]
+    chore = { changelog_title = "Misc" }
+    hotfix = { changelog_title = "Hot fix" }
+    ```
+
+### `omit_from_changelog`
+- Type: `Bool`
+- Optional: `true`
+- Default value: `false` 
+- Description: do not generate changelog entries for the given commit type.
+- Example:
+    ```toml
+    [commit_types]
+    chore = { changelog_title = "Chore", omit_from_changelog = true }
+    ```
 ## Bump config
 
 ### `pre_bump_hooks`

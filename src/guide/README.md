@@ -154,6 +154,7 @@ GitHub automatically link issues prefixed with a hash.
 
 ### Custom commit types
 
+**Allowing custom commit types:**
 By default `cog commit` supports standard conventional commits type `feat`, `fix` plus the angular commit types: `build`, `ci`,
 `revert`, `docs`, `test`, `style`, `chore`, `perf`. If you want to use more types you can add them to a file named
 `cog.toml` in your repository root directory :
@@ -165,6 +166,26 @@ release = { changelog_title = "Releases" }
 ```
 
 The above config would generate a `cog commit hotfix` and `cog commit release` subcommands following the same structure as the default ones.
+
+**Overriding existing commit types:**
+
+Existing commit type can be overridden just like custom ones: 
+```toml
+[commit_types]
+feat = { changelog_title = "➕ Additional features" }
+fix = { changelog_title = "🪲 Releases" }
+```
+
+**Omit commits from changelog:**
+
+If you want to make changelog more concise you can skip some commit types with the `omit_from_changelog` option. 
+
+```toml
+[commit_types]
+chore = { changelog_title = "", omit_from_changelog = true }
+ci = { changelog_title = "", omit_from_changelog = true }
+perf = { changelog_title = "", omit_from_changelog = true }
+```
 
 ### Deal with merge commits
 
