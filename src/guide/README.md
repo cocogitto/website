@@ -946,3 +946,34 @@ To tell `cog` to pick only version starting with a prefix set this in your `cog.
 ```toml
 tag_prefix = "v"
 ```
+
+## Get the current version
+
+It's sometime needed to display the current version for scripting purpose. 
+You can print the latest SemVer tag on your repo with the `get-version` subcommand: 
+
+```bash
+❯ cog get-version
+Current version:
+5.3.1
+```
+
+To silence the additional info and get only the version use the `-v` flag: 
+```bash
+❯ cog -v get-version
+5.3.1
+```
+
+If working on a monorepo you can also specify the target package: 
+```bash
+❯ cog -v get-version --package gill-db
+0.1.0
+```
+
+Finally, if you need the command to print a version no matter the state of your repository, you can provide a fallback: 
+```bash
+❯ cog get-version --fallback 0.1.0
+0.1.0
+```
+
+
