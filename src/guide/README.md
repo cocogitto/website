@@ -739,7 +739,7 @@ post_bump_hooks = [
 ```
 
 As you can see we are bumping the manifest using a small DSL. It as only a few keywords :
-- start with the `version` or `latest` keyword.
+- start with the one of `version`,`version_tag`, `latest`, `latest_tag` or `package` keyword.
 - followed by the `+` operator.
 - `major`, `minor` and `patch` to specify the kind of increment you want.
   Then an optional amount, default being one (`version+1minor` and `version+minor` being the same).
@@ -876,6 +876,7 @@ To override these you can define per package hooks.
 ```shell
 ## Pre hooks executed before each package bump, here we use a cargo command to bump rust package manifest
 pre_package_bump_hooks = [
+    "echo 'upgrading {{package}}' to {{version}}",
     "cargo set-version {{version}}"
 ]
 
@@ -885,6 +886,10 @@ rust-package-two = { path = "packages/rust-two" }
 ## We have a java project in the mono-repository so we override the default pre-hook
 java-package = { path = "packages/java-package", pre_bump_hooks = [ "mvn build" ] }
 ```
+
+:::tip
+Note that for package hooks, you can use the `package` variable from version DSL to get the current package name.
+:::
 
 ### Bump hook recipes
 
