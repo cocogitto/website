@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
 
       - name: Conventional commit check
-        uses: oknozor/cocogitto-action@v1
+        uses: oknozor/cocogitto-action@v3
         with:
           git-user: 'github-actions'
           git-user-email: 'github-actions@github.com'
