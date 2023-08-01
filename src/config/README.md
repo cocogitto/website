@@ -156,6 +156,19 @@ The config reference list all value that can be set in the `cog.toml` file at th
     * [User guide -> Version DSL](../guide/#version-dsl)
     * [User guide -> Bump profiles](../guide/guide/#bump-profiles)
 
+### `skip_ci` 
+
+- Type: `String`
+- Optional: `true`
+- Description: "skip_ci" string that is appended to the end of the bump commit. It can also be 
+  specified using `cog bump --skip-ci <skip_ci_string>`
+- Example:
+    ```toml
+    skip_ci = "[skip-ci]"
+    ```
+- Also see:
+    * [User guide -> Make Cocogitto skip CI CD](../guide/#make-cocogitto-skip-ci-cd)
+
 ## Changelog
 
 ### `path`
