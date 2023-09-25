@@ -1002,6 +1002,10 @@ Date: Tue Mar 7 15:06:18 2023 +0200
 
 Note that if both `skip_ci` configuration and `--skip-ci` option are used, `cog` will take the `--skip-ci` option.
 
+## Skip untracked or uncommited changes
+
+By default, Cocogitto will abort bump if there are uncommited or untracked changes. You can change this behavior using the `skip_untracked` configuration in the `cog.toml` file or the `--skip-untracked` option of the `bump` command. If so, the warning will be printed to `stderr` and the bump will continue.
+
 ## Get the current version
 
 It's sometime needed to display the current version for scripting purpose. 

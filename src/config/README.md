@@ -169,6 +169,19 @@ The config reference list all value that can be set in the `cog.toml` file at th
 - Also see:
     * [User guide -> Make Cocogitto skip CI CD](../guide/#make-cocogitto-skip-ci-cd)
 
+### `skip_untracked` 
+
+- Type: `boolean`
+- Optional: `true`
+- Default value: `false` 
+- Description: Allows to perform bump even if there are untracked or uncommited changes.
+- Example:
+    ```toml
+    skip_untracked = true
+    ```
+- Also see:
+    * [User guide -> Skip untracked or uncommited changes](../guide/#skip-untracked-or-uncommited-changes)
+
 ## Changelog
 
 ### `path`
