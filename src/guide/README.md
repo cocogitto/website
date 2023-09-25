@@ -975,6 +975,33 @@ To tell `cog` to pick only version starting with a prefix set this in your `cog.
 tag_prefix = "v"
 ```
 
+## Make Cocogitto skip CI CD
+
+Cocogitto will create a commit when performing a bump, which can trigger your CI/CD if you have one. Some CI/CD tools support a "skip_ci" string that you can add to a commit which will skip the pipeline execution. To do so with `cog`, you can use the `skip_ci` configuration in your `cog.toml` file or the `cog bump --skip-ci <string>` option to add a "skip_ci" pattern your CI/CD tool supports.
+
+**Example:**
+```toml
+skip_ci = "[skip ci]"
+```
+
+or using the `cog bump` command :
+
+```bash
+❯ cog bump --skip-ci "[skip ci]"
+```
+
+**Result:**
+
+```bash
+❯ git log
+commit 213d08c8c1e12ba7d59497e6eda436a3ce63d87c (HEAD -> main, tag: 1.0.0)
+Author: John Doe <jon.doe@unknown.com>
+Date: Tue Mar 7 15:06:18 2023 +0200
+    chore(version): 1.0.0 [skip ci]
+```
+
+Note that if both `skip_ci` configuration and `--skip-ci` option are used, `cog` will take the `--skip-ci` option.
+
 ## Get the current version
 
 It's sometime needed to display the current version for scripting purpose. 
