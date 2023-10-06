@@ -182,6 +182,17 @@ The config reference list all value that can be set in the `cog.toml` file at th
 - Also see:
     * [User guide -> Skip untracked or uncommited changes](../guide/#skip-untracked-or-uncommited-changes)
 
+### `disable_changelog` 
+
+- Type: `boolean`
+- Optional: `true`
+- Default value: `false` 
+- Description: Disable changelog generation when bumping.
+- Example:
+    ```toml
+    disable_changelog = true
+    ```
+
 ## Changelog
 
 ### `path`
