@@ -251,7 +251,7 @@ Cocogitto provide a way to share [git hooks](https://git-scm.com/book/en/v2/Cust
 First you need to set up some hooks in `cog.toml`:
 
 ```toml
-# Embedded git-hoooks script
+# Embedded git-hooks script
 [git_hooks.commit-msg]
 script = """#!/bin/sh
 set -e
