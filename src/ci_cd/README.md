@@ -88,30 +88,35 @@ you can directly use `cog`.
 on:
   workflow_dispatch:
     branches: main
-    
+
 jobs:
   release:
     name: Perform release
-        - uses: actions/checkout@v3
-            with:
-              fetch-depth: 0
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-        - name: Cocogitto release
-          id: release
-          uses: oknozor/cocogitto-action@v3
-          with:
-            release: true
-              git-user: 'Cog Bot'
-              git-user-email: 'mycoolproject@org.org'
+      - name: Cocogitto release
+        id: release
+        uses: oknozor/cocogitto-action@v3
+        with:
+          release: true
+          git-user: 'Cog Bot'
+          git-user-email: 'mycoolproject@org.org'
 
-        - name: Generate Changelog
-          run: cog changelog --at ${{ steps.release.outputs.version }} -t full_hash > GITHUB_CHANGELOG.md
+      - name: Generate Changelog
+        run: cog changelog --at ${{ steps.release.outputs.version }} -t full_hash > GITHUB_CHANGELOG.md
 
-        - name: Upload github release
-          uses: softprops/action-gh-release@v1
-          with:
-            body_path: GITHUB_CHANGELOG.md
-            tag_name: ${{ steps.release.outputs.version }}
+      - name: Upload github release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: GITHUB_CHANGELOG.md
+          tag_name: ${{ steps.release.outputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 Also see:
