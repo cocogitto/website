@@ -139,7 +139,7 @@ refactor(runtime): drop support for Node 6
 Upon save a commit will be created with the body and footer typed.
 
 ::: tip
-There are to kind of footer separators in conventional commits : `token: message` and `token #message`.
+There are two kinds of footer separators in conventional commits : `token: message` and `token #message`.
 
 GitHub automatically link issues prefixed with a hash.
 
