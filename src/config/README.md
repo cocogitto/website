@@ -160,11 +160,10 @@ The config reference list all value that can be set in the `cog.toml` file at th
 
 - Type: `String`
 - Optional: `true`
-- Description: "skip_ci" string that is appended to the end of the bump commit. It can also be 
-  specified using `cog bump --skip-ci <skip_ci_string>`
+- Description: A "skip-ci" string to add to the commits when using the ```bump``` or ```commit``` commands. Default value is ```[skip ci]```.
 - Example:
     ```toml
-    skip_ci = "[skip-ci]"
+    skip_ci = "[ci-skip]"
     ```
 - Also see:
     * [User guide -> Make Cocogitto skip CI CD](../guide/#make-cocogitto-skip-ci-cd)
