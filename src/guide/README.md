@@ -975,6 +975,17 @@ To tell `cog` to pick only version starting with a prefix set this in your `cog.
 tag_prefix = "v"
 ```
 
+full tag including the prefix can be access in configuration file with {{version_tag}} 
+
+```toml
+tag_prefix = "v"
+
+
+post_bump_hooks = [
+    "git push origin {{version_tag}}"
+]
+```
+
 ## Make Cocogitto skip CI CD
 
 Cocogitto will create a commit when performing a bump, which can trigger your CI/CD if you have one. Some CI/CD tools support a "skip_ci" string that you can add to a commit which will skip the pipeline execution. To do so with `cog`, you can use the `skip_ci` configuration in your `cog.toml` file or the `cog bump --skip-ci <string>` option to add a "skip_ci" pattern your CI/CD tool supports.
